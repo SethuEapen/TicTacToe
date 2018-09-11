@@ -1,0 +1,24 @@
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+void pointers(int* Ptr);
+
+int main()
+{
+
+  int board[3][3];
+  int* boardPtr = &board;
+  pointers(boardPtr);
+  
+}
+
+void pointers(int* Ptr){
+  for(int x = 0; x < 3; x++){
+    for(int y = 0; y < 3; y++){
+      cout << Ptr << endl;
+      cout << *Ptr << endl;
+    }
+  }
+}
