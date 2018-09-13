@@ -3,8 +3,8 @@
 
 using namespace std;
 
-void clearBoard(int* Ptr[3][3]);
-void drawBoard(int* Ptr[3][3]);
+void clearBoard(char* Ptr[3][3]);
+void drawBoard(char* Ptr[3][3]);
 
 int main()
 {
@@ -16,21 +16,35 @@ int main()
       boardPtr[x][y] = &board[x][y];
     }
   }
-  clearBoard(boardPtr);  
+  clearBoard(boardPtr);
+  drawBoard(boardPtr);
 }
 
-void clearBoard(int* Ptr[3][3]){
+void clearBoard(char* Ptr[3][3]){
   for(int x = 0; x < 3; x++){
     for(int y = 0; y < 3; y++){
-      Ptr[x][y] = 0;
+      *Ptr[x][y] = ' ';
     }
   }
 }
 
-void drawBoard(int* Ptr[3][3]){
+void drawBoard(char* Ptr[3][3]){
   cout << "  1 2 3" << endl;
   cout << "a";
   for(int i = 0; i < 3; i++){
-    cout << " " << 
+    cout << " " << *Ptr[0][i];
   }
+  cout << endl;
+
+  cout << "b";
+  for(int i = 0; i < 3; i++){
+    cout << " " << *Ptr[1][i];
+  }
+  cout << endl;
+
+  cout << "c";
+  for(int i = 0; i < 3; i++){
+    cout << " " << *Ptr[2][i];
+  }
+  cout << endl;  
 }
