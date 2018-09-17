@@ -21,6 +21,12 @@ int main()
   clearBoard(boardPtr);
   drawBoard(boardPtr);
   while(!checkWin(boardPtr, player)){
+    if(player == 'X'){
+      player = 'O';
+    }
+    else{
+      player = 'X';
+    }
     cin.get(input, 3); // Do With do while
     cin.clear();
     cin.ignore(100, '\n');
@@ -42,15 +48,14 @@ int main()
       cout << "Fskdfjhskdfh" << endl;
     }
     drawBoard(boardPtr);
-    player = 'O';
   }
-  cout << "Finished" << endl;
+  cout << "Congratulations! Player " << player << " won!" << endl << "Do you want to play again?(y or n)" << endl;
 }
 
 void clearBoard(char* Ptr[3][3]){
   for(int x = 0; x < 3; x++){
     for(int y = 0; y < 3; y++){
-      *Ptr[x][y] = 'x';
+      *Ptr[x][y] = ' ';
     }
   }
 }
