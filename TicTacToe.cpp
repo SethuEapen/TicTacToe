@@ -12,7 +12,7 @@ int main()
   char board[3][3];
   char* boardPtr[3][3];
   char input[2];
-  char player = 'X';
+  char player = 'O';
   for(int x = 0; x < 3; x++){
     for(int y = 0; y < 3; y++){
       boardPtr[x][y] = &board[x][y];
@@ -27,44 +27,59 @@ int main()
     cout << input << endl;
     if(input[0] == '1' || input[0] == '2' || input[0] == '3'){
       if(input[1] == 'a' || input[1] == 'b' || input[1] == 'c'){
-	if(board[(int)input[0] - '1'][(int)input[1] - 'a'] == ' '){
-	  board[(int)input[0] - '1'][(int)input[1] - 'a'] = player;
+	if(board[(int)input[1] - 'a'][(int)input[0] - '1'] == ' '){
+	  board[(int)input[1] - 'a'][(int)input[0] - '1'] = player;
 	}
+	else{
+	  cout << "Fskdfjhskdfh" << endl;
+	}
+      }
+      else{
+	cout << "Fskdfjhskdfh" << endl;
       }
     }
     else{
       cout << "Fskdfjhskdfh" << endl;
     }
     drawBoard(boardPtr);
-    player == 'Y';
+    player = 'O';
   }
+  cout << "Finished" << endl;
 }
 
 void clearBoard(char* Ptr[3][3]){
   for(int x = 0; x < 3; x++){
     for(int y = 0; y < 3; y++){
-      *Ptr[x][y] = ' ';
+      *Ptr[x][y] = 'x';
     }
   }
 }
 
 void drawBoard(char* Ptr[3][3]){
   cout << "  1 2 3" << endl;
-  cout << "a";
+  cout << 'a';
   for(int i = 0; i < 3; i++){
-    cout << " " << *Ptr[0][i];
+    cout << ' ' << *Ptr[0][i];
   }
   cout << endl;
 
-  cout << "b";
+  cout << 'b';
   for(int i = 0; i < 3; i++){
-    cout << " " << *Ptr[1][i];
+    cout << ' ' << *Ptr[1][i];
   }
   cout << endl;
 
-  cout << "c";
+  cout << 'c';
   for(int i = 0; i < 3; i++){
-    cout << " " << *Ptr[2][i];
+    cout << ' ' << *Ptr[2][i];
+  }
+  cout << endl;
+  
+  for(int x = 0; x < 3; x++){
+    for(int y = 0; y < 3; y++){
+      cout << endl;
+      cout << *Ptr[x][y];
+    }
   }
   cout << endl;  
 }
