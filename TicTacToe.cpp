@@ -9,6 +9,7 @@ void clearBoard(char* Ptr[3][3]);
 void drawBoard(char* Ptr[3][3]);
 bool checkWin(char* Ptr[3][3], char player);
 bool checkTie(char* Ptr[3][3]);
+int xWins = 0, oWins = 0;
 
 int main()//Main Loop
 {
@@ -27,6 +28,7 @@ int main()//Main Loop
   }
   //Game
   while(stillPlaying == 'y'){//default set to y
+    cout << "Score: X wins - " << xWins << endl << "O wins - " << oWins << endl; //prints out o and x wins
     clearBoard(boardPtr);//clear and itit board
     drawBoard(boardPtr);//draw board to screen
     player = 'O';//set default to O so it will change to X
@@ -62,6 +64,12 @@ int main()//Main Loop
     }
     else{//else it must be that someone won
       cout << "Congratulations! Player " << player << " won!" << endl;
+      if(player == 'X'){
+	xWins++;
+      }
+      else{
+	oWins++;
+      }
     }
     cout << "Do you want to play again?(y or n)" << endl;
     cin >> stillPlaying;
@@ -101,21 +109,17 @@ void drawBoard(char* Ptr[3][3]){//draw a board
 bool checkWin(char* Ptr[3][3], char player){//check if anyone won
   for(int i = 0; i < 3; i++){//rows
     if(*Ptr[0][i] == player && *Ptr[1][i] == player && *Ptr[2][i] == player){
-      cout << "A" << endl;
       return true;
     }//columns
     if(*Ptr[i][0] == player && *Ptr[i][1] == player && *Ptr[i][2] == player){
-      cout << "B" << endl;
       return true;
     }
   }//diagonals
   if(*Ptr[0][0] == player && *Ptr[1][1] == player && *Ptr[2][2] == player){
-    cout << "C" << endl;
     return true;
   }
   if(*Ptr[2][0] == player && *Ptr[1][1] == player && *Ptr[0][2] == player){
     return true;
-    cout << "D" << endl;
   }
   return false;
 }
